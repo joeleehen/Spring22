@@ -21,3 +21,11 @@ void draw() {
       stars[i].show();
     }
 }
+
+/*
+This code is largely taken from CodingTrain as an introductory
+exercise to C-type programming and Processing. Code can be found at
+
+https://github.com/CodingTrain/website/tree/main/CodingChallenges/
+CC_001_StarField/Processing
+*/
