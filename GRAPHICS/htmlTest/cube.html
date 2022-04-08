@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hello World in Three.js</title>
+		<!-- style tag gets rid of weird white borders around window-->
+		<style type="text/css">
+			body {margin : 0}
+		</style>
+	</head>
+	<body>
+		<script src="js/three.js"></script>
+		<script>
+			let scene = new THREE.Scene();
+			let camera =  new THREE.PerspectiveCamera(75, 
+			window.innerWidth / window.innerHeight, 0.1, 1000);
+			camera.position.z = 2;
+
+			let renderer = new THREE.WebGLRenderer();
+			// below is like size() in Processing
+			renderer.setSize(window.innerWidth, window.innerHeight);
+			document.body.appendChild(renderer.domElement);
+
+			// add geometry
+			let geometry = new THREE.BoxGeometry();
+			let material = new THREE.MeshBasicMaterial({color : 0xff0000});
+			// create an object
+			let cube = new THREE.Mesh(geometry, material);
+			// add it to scene
+
+			let pivot = new THREE.Object3D();
+			pivot.add(cube);
+
+			scene.add(pivot);
+
+			draw = function() {
+				requestAnimationFrame(draw);
+				renderer.render(scene, camera);
+				pivot.rotation.x += 0.01;
+			}
+
+			draw();
+		</script>
+	</body>
+</html>
