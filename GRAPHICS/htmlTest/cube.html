@@ -10,6 +10,8 @@
 	<body>
 		<script src="js/three.js"></script>
 		<script>
+			let textureLoader = new THREE.TextureLoader();
+			let peshTexture = textureLoader.load("funnyDog.png")
 			let scene = new THREE.Scene();
 			let camera =  new THREE.PerspectiveCamera(75, 
 			window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -23,8 +25,10 @@
 			// add geometry
 			let geometry = new THREE.BoxGeometry();
 			let material = new THREE.MeshBasicMaterial({color : 0xff0000});
+			let peshMaterial = new THREE.MeshBasicMaterial({map: peshTexture})
+
 			// create an object
-			let cube = new THREE.Mesh(geometry, material);
+			let cube = new THREE.Mesh(geometry, peshMaterial);
 			// add it to scene
 
 			let pivot = new THREE.Object3D();
@@ -36,6 +40,7 @@
 				requestAnimationFrame(draw);
 				renderer.render(scene, camera);
 				pivot.rotation.x += 0.01;
+				pivot.rotation.y += 0.01;
 			}
 
 			draw();
